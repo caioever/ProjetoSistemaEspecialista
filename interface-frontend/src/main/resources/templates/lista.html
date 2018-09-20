@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Tipo o aknator, só que com frutas e objetos</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
+    <link rel="stylesheet" href="/style/styleCss.css"/>
+</head>
+<body>
+
+<header>
+    <nav class="menu">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo right"><i class="material-icons">bubble_chart</i>Sistema Especialiasta</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="/init">Iniciar questionario</a></li>
+                <li><a href="/arvore">Ver arvore</a></li>
+                <li><a href="/perguntas">Listar perguntas</a></li>
+                <li><a href="/itens">Listar mini mundo</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <h1>Lista de <span th:text="${tipo}"></span></h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Label</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="resposta : ${resposta}">
+            <td><span th:text="${resposta.id}"></span></td>
+            <td><span th:text="${resposta.label}"></span></td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+</body>
+
+
+</html>
