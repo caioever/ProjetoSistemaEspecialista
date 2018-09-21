@@ -10,15 +10,19 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ArvoreController {
 
+//    @RequestMapping(value = "/arvore")
+//    public ModelAndView printArvore() {
+//        ModelAndView mv = new ModelAndView("arvore");
+//
+//        RestTemplate restTemplate = new RestTemplate();
+//        NodeDTO nodeDTO = restTemplate.getForObject("http://localhost:5000/arvore", NodeDTO.class);
+//
+//        mv.addObject("arvore", nodeDTO);
+//        return mv;
+//    }
     @RequestMapping(value = "/arvore")
-    public ModelAndView printArvore() {
-        ModelAndView mv = new ModelAndView("arvore");
-
-        RestTemplate restTemplate = new RestTemplate();
-        NodeDTO nodeDTO = restTemplate.getForObject("http://localhost:5000/arvore", NodeDTO.class);
-
-        mv.addObject("arvore", nodeDTO);
-        return mv;
+    public String printArvore() {
+        return "arvore";
     }
 
     @RequestMapping(value = "/init")

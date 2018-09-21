@@ -9,6 +9,9 @@
     <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
     <link rel="stylesheet" href="/style/styleCss.css"/>
+    <!--<link rel="stylesheet" href="/style/example.css" />-->
+    <link rel="stylesheet" href="/style/pygments.css" />
+    <link rel="stylesheet" href="/style/easyzoom.css" />
 </head>
 <body>
 
@@ -28,11 +31,56 @@
 
 <div class="container">
     <h1>Arvore</h1>
-    <span th:text="${arvore.pergunta.get().label}"></span>
+    <!--<img src="/img/ArvoreDecisao.jpg">-->
+    <div class="easyzoom easyzoom--overlay is-ready">
+        <a href="img/ArvoreDecisao.jpg">
+            <img class="responsive-img" src="img/ArvoreDecisao.jpg">
+        </a>
+    </div>
 </div>
 
+<!--<div>-->
+    <!--<a class="magnifier-thumb-wrapper">-->
+        <!--<img id="thumb" src="/img/ArvoreDecisao.jpg">-->
+    <!--</a>-->
+    <!--<div class="magnifier-preview" id="preview" style="width: 100px; height: 100px">Starry Night Over The Rhone<br>by Vincent van Gogh</div>-->
+<!--</div>-->
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>-->
+<script src="/js/easyzoom.js"></script>
+<script>
+    // Instantiate EasyZoom instances
+    var $easyzoom = $('.easyzoom').easyZoom();
+
+    // Setup thumbnails example
+    var api1 = $easyzoom.filter('.easyzoom--with-thumbnails').data('easyZoom');
+
+    $('.thumbnails').on('click', 'a', function(e) {
+        var $this = $(this);
+
+        e.preventDefault();
+
+        // Use EasyZoom's `swap` method
+        api1.swap($this.data('standard'), $this.attr('href'));
+    });
+
+    // Setup toggles example
+    var api2 = $easyzoom.filter('.easyzoom--with-toggle').data('easyZoom');
+
+    $('.toggle').on('click', function() {
+        var $this = $(this);
+
+        if ($this.data("active") === true) {
+            $this.text("Switch on").data("active", false);
+            api2.teardown();
+        } else {
+            $this.text("Switch off").data("active", true);
+            api2._init();
+        }
+    });
+</script>
 
 </body>
 
